@@ -56,11 +56,11 @@ class BottomSheetWidget extends StatelessWidget {
                       height: 1,
                       color: AppColors.stroke,
                     ),
-                    SetLabelButton(
-                      primaryLabel: "Inserir código do boleto",
-                      primaryOnPressed: () {},
-                      secundaryLabel: "Adicionar da galeria",
-                      secundaryOnPressed: () {},
+                    SetLabelButtons(
+                      primaryLabel: this.primaryLabel,
+                      primaryOnPressed: this.primaryOnPressed,
+                      secundaryLabel: this.secundaryLabel,
+                      secundaryOnPressed: this.secundaryOnPressed,
                       enablePrimaryColor: true,
                     ),
                   ],

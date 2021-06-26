@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:payflow/modules/barcode_scanner/barcode_scanner_status.dart';
+import 'barcode_scanner_status.dart';
 
 class BarcodeScannerController {
   final statusNotifier =
@@ -54,8 +54,12 @@ class BarcodeScannerController {
 
   void scanWithImagePicker() async {
     final response = await ImagePicker().getImage(source: ImageSource.gallery);
-    final inputImage = InputImage.fromFilePath(response!.path);
-    scannerBarCode(inputImage);
+    if (response != null) {
+      final inputImage = InputImage.fromFilePath(response!.path);
+      scannerBarCode(inputImage);
+    } else {
+      scanWithCamera();
+    }
   }
 
   void scanWithCamera() {
