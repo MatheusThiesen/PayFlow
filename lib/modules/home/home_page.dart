@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:payflow/modules/home/home_controller.dart';
+import 'package:payflow/shared/auth/auth_controller.dart';
 import 'package:payflow/shared/themes/app_colors.dart';
 import 'package:payflow/shared/themes/app_text_styles.dart';
 
@@ -13,6 +14,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final controller = HomeController();
+  final authController = AuthController();
   final pages = [
     Container(
       color: Colors.red,
@@ -73,7 +75,11 @@ class _HomePageState extends State<HomePage> {
                   color: AppColors.primary,
                 )),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                setState(() {
+                  Navigator.pushNamed(context, "/barcode_scanner");
+                });
+              },
               child: Container(
                 height: 56,
                 width: 56,
